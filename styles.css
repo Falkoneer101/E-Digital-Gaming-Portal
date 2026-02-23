@@ -1807,7 +1807,17 @@ body {
     .news-header h2 { font-size: 24px; }
     .news-filters { flex-wrap: wrap; justify-content: center; }
     .carousel-control-wrapper { gap: 10px; }
-    .news-card { flex: 0 0 260px; }
+    .news-card { flex: 0 0 100%; opacity: 0; transform: scale(0.9); pointer-events: none; }
+    .news-header { flex-direction: column; gap: 15px; text-align: center; }
+    .news-header h2 { font-size: 24px; }
+    .news-filters { flex-wrap: wrap; justify-content: center; }
+    .news-cards { overflow: hidden; width: 100%; }
+    .news-card.active-card { opacity: 1; transform: scale(1); flex: 0 0 90%; pointer-events: all; width: 90%; overflow: visible; }
+    .carousel-control-wrapper { overflow: visible; }
+    .card-body { height: auto; min-height: unset; }
+    .card-actions { max-width: 100%; width: 100%; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .action-red { flex: 1 1 100%; font-size: 12px; padding: 10px; text-align: center; }
+    .action-white { flex: 1 1 100%; font-size: 12px; padding: 10px; text-align: center; }
 
     .about-title { font-size: 28px; margin-left: 15px; }
     .blue-pattern-bg { width: 100%; margin-left: 0; height: auto; min-height: 300px; border-radius: 0; }
