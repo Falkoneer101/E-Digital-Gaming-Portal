@@ -1753,3 +1753,171 @@ body {
     font-weight: 600;
     margin: 0;
 }
+
+
+@media (max-width: 1024px) {
+
+    .nav-links { flex-wrap: wrap; justify-content: center; }
+    .nav-links li { text-align: center; }
+    .nav-links a { text-align: center; }
+
+    .slide { height: 340px; }
+    .slider-text h1 { font-size: 26px; }
+
+    .blue-pattern-bg { width: 80%; margin-left: 20%; }
+    .overlap-container { left: -200px; width: 85%; }
+    .info-card { flex: 0 0 380px; max-width: 360px; }
+
+    .split-image img { width: 100%; height: auto; margin-left: 0; }
+
+    .types-grid { grid-template-columns: repeat(2, 1fr); }
+    .gov-grid { grid-template-columns: repeat(2, 1fr); }
+    .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+    .materials-grid { grid-template-columns: 1fr 1fr; }
+
+    .news-card { flex: 0 0 280px; }
+
+    .testimonial-item { min-width: 320px; width: 320px; }
+
+    .contact-section { padding: 40px 20px; }
+
+    .footer-logo { margin-left: 20px; }
+}
+
+@media (max-width: 768px) {
+
+    .info .container { flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .brand-name { width: 100%; text-align: center; font-size: 14px; }
+    .contact-info { gap: 15px; font-size: 13px; }
+    .log-btn { justify-content: center; }
+
+    .nav-bar .container { flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 15px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 4px; }
+    .nav-links a { font-size: 11px; padding: 6px 10px; }
+    .logo img { height: 45px; }
+
+    .slide { height: auto; min-height: 260px; background-size: cover; }
+    .slide .container { padding-left: 20px; }
+    .slider-text h1 { font-size: 20px; margin-bottom: 30px; }
+    .reg-btn { font-size: 14px; padding: 10px 18px; }
+
+    .tittle { font-size: 15px; padding: 15px; }
+
+    .news-header { flex-direction: column; gap: 15px; text-align: center; }
+    .news-header h2 { font-size: 24px; }
+    .news-filters { flex-wrap: wrap; justify-content: center; }
+    .carousel-control-wrapper { gap: 10px; }
+    .news-card { flex: 0 0 260px; }
+
+    .about-title { font-size: 28px; margin-left: 15px; }
+    .blue-pattern-bg { width: 100%; margin-left: 0; height: auto; min-height: 300px; border-radius: 0; }
+    .overlap-container { position: relative; left: 0; top: 0; transform: none; flex-direction: column; width: 100%; padding: 20px; gap: 20px; }
+    .info-card { flex: 1 1 100%; max-width: 100%; }
+
+    .section-split { flex-direction: column !important; padding: 30px 20px; }
+    .split-image img { width: 100%; height: auto; margin-left: 0; }
+    .split-title { font-size: 24px; }
+
+    .licensing-banner { flex-direction: column; padding: 20px; gap: 15px; text-align: center; margin-top: 0; }
+    .progress-ring { margin-left: 0; margin-right: 0; }
+    .materials-grid { grid-template-columns: 1fr; }
+    .full-row { grid-column: span 1; }
+
+    .fee-banner { padding: 30px 20px; }
+    .fee-banner h2 { font-size: 22px; }
+
+    .category-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    .submission-section h2 { font-size: 26px; }
+    .download-guidelines-btn { font-size: 16px; padding: 10px 25px; }
+
+    .container-membership { flex-direction: column; gap: 30px; }
+    .membership-text h2 { font-size: 26px; }
+    .types-grid { grid-template-columns: 1fr; }
+    .types-action-row { flex-direction: column; align-items: center; }
+    .action-strip { width: 100%; max-width: 400px; }
+
+    .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+    .portal-tabs { flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+    .gov-grid { grid-template-columns: 1fr; }
+
+    .testimonials-container { flex-direction: column; padding: 20px; gap: 20px; }
+    .testimonial-sidebar { min-width: unset; }
+    .quote-icon { font-size: 80px; }
+    .testimonial-title { font-size: 26px; }
+    .testimonial-item { min-width: 280px; width: 280px; }
+
+    .contact-card { flex-direction: column; }
+    .contact-form { padding: 20px; }
+    .contact-info-box { padding: 25px; }
+    .social-icons { flex-wrap: wrap; gap: 10px; }
+
+    .footer-container { flex-direction: column; align-items: center; text-align: center; gap: 15px; padding: 15px; }
+    .footer-logo { margin-left: 0; width: 100px; }
+    .links-columns { gap: 20px; justify-content: center; }
+    .footer-slogan-bar h2 { font-size: 20px; padding: 0 15px; }
+    .footer-bottom .footer-container { flex-direction: column; gap: 6px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+
+    .info .container { flex-direction: column; align-items: center; gap: 8px; padding: 8px 15px; }
+    .brand-name { font-size: 13px; }
+    .contact-info { flex-direction: column; align-items: center; gap: 6px; font-size: 12px; }
+    .contact-icon { width: 16px; }
+    .log-btn { width: 100%; justify-content: center; }
+    .register { font-size: 13px; padding: 7px 14px; }
+
+    .nav-links a { font-size: 10px; padding: 5px 7px; }
+    .logo img { height: 38px; }
+
+    .slide { min-height: 220px; }
+    .slider-text h1 { font-size: 16px; margin-bottom: 20px; }
+    .reg-btn { font-size: 13px; padding: 8px 14px; }
+    .arrow { width: 34px; height: 34px; font-size: 14px; }
+
+    .tittle { font-size: 13px; padding: 12px; }
+
+    .news-card { flex: 0 0 240px; }
+    .news-header h2 { font-size: 20px; }
+
+    .about-title { font-size: 22px; }
+
+    .category-grid { grid-template-columns: 1fr; }
+
+    .licensing-title { font-size: 22px; }
+    .register-game-btn { font-size: 14px; padding: 10px 18px; }
+
+    .submission-section { max-height: none; }
+    .submission-section h2 { font-size: 22px; }
+    .req-bar { font-size: 13px; }
+
+    .membership-text h2 { font-size: 22px; }
+    .membership-card { padding: 25px; }
+    .pill { font-size: 12px; padding: 6px 14px; }
+
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .portal-main-title { font-size: 24px; }
+
+    .gov-main-title { font-size: 24px; }
+
+    .testimonial-item { min-width: 240px; width: 240px; }
+    .testimonial-bubble { height: auto; min-height: 100px; }
+
+    .contact-header h2 { font-size: 22px; }
+    .submit-btn { padding: 12px 40px; }
+
+    .links-columns { flex-direction: column; align-items: center; gap: 4px; }
+    .links-columns ul { text-align: center; }
+    .footer-slogan-bar h2 { font-size: 16px; }
+    .footer-bottom p { font-size: 11px; }
+}
+
+@media (max-width: 360px) {
+    .nav-links a { font-size: 9px; padding: 4px 6px; }
+    .slider-text h1 { font-size: 14px; }
+    .news-card { flex: 0 0 200px; }
+    .testimonial-item { min-width: 200px; width: 200px; }
+    .footer-slogan-bar h2 { font-size: 14px; }
+}

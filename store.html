@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Gaming Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .store-page-bg { background-color: #f5f7fa; }
+
+        .store-top-bar { background: #E7F2F9; border-bottom: 1px solid #e0e6ef; padding: 14px 0; }
+        .store-header-inner { width: 90%; max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 20px; }
+        .store-heading { font-size: 28px; font-weight: 800; color: #147CC3; margin-bottom: 0; white-space: nowrap; }
+        .store-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; flex: 1; justify-content: space-between;}
+
+        .store-search-box { display: flex; align-items: center; border: 1.5px solid #dde4ef; border-radius: 6px; overflow: hidden; background: #fff; flex: 1; max-width: 360px; margin: 0 auto; }
+        .store-search-box input { border: none; outline: none; padding: 9px 14px; font-family: 'Montserrat', sans-serif; font-size: 13px; width: 100%; color: #1a1a2e; }
+        .store-search-box button { background: #147CC3; border: none; padding: 9px 14px; cursor: pointer; color: #fff; font-size: 14px; line-height: 1; }
+
+        .store-filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+        .store-filter-btn { padding: 7px 14px; border-radius: 20px; border: 1.5px solid #dde4ef; background: #fff; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; color: #555; position: relative; transition: all 0.2s; }
+        .store-filter-btn.active-filter { background: #147CC3; color: #fff; border-color: #147CC3; }
+        .store-filter-btn:hover:not(.active-filter) { background: #eef4fb; color: #147CC3; }
+        .s-notif-dot { width: 7px; height: 7px; background: #D0021B; border-radius: 50%; display: inline-block; position: absolute; top: 4px; right: 4px; }
+        .store-sort-btn { padding: 7px 16px; border-radius: 6px; border: 1.5px solid #dde4ef; background: #fff; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; color: #1a1a2e; }
+
+        .store-featured-banner { background: linear-gradient(to right, #0b4f7a 0%, #147CC3 25%, rgba(20,124,195,0.55) 55%, transparent 80%), url('img32.png') center/cover no-repeat; min-height: 265px; position: relative; display: flex; align-items: center; transition: background-image 0.4s; }
+        .store-featured-content { width: 90%; max-width: 1400px; margin: 0 auto; padding: 36px 20px; }
+        .store-featured-inner { max-width: 490px; }
+        .store-featured-label { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .store-featured-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .store-featured-desc { font-size: 12px; color: rgba(255,255,255,0.88); line-height: 1.65; margin-bottom: 10px; }
+        .store-genre-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.72); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 7px; }
+        .store-tag-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+        .store-tag-pill { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.5); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 13px; border-radius: 20px; }
+        .store-featured-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .store-btn-cart { background: #Ea4040; color: #fff; border: 2px solid #fff; padding: 10px 20px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+        .store-btn-cart:hover { opacity: 0.88; }
+        .store-btn-price { background: #28A745; color: #fff; border: 2px solid #fff; padding: 10px 20px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+        .store-btn-price:hover { opacity: 0.88; }
+        .store-btn-view-outline { background: #fff; color: #147CC3; border: 2px solid #fff; padding: 10px 20px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+        .store-btn-view-outline:hover { opacity: 0.88; }
+        .store-banner-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.25); border: none; color: #fff; width: 38px; height: 38px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 2; }
+        .store-banner-nav:hover { background: rgba(255,255,255,0.45); }
+        .store-banner-left { left: 16px; }
+        .store-banner-right { right: 16px; }
+
+
+        .store-content { width: 90%; max-width: 1400px; margin: 30px auto; padding: 0 20px; }
+        .store-section-title { font-size: 20px; font-weight: 800; color: #147CC3; margin-bottom: 18px; }
+        .store-game-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 10px; }
+
+        .store-game-card { background: #fff; border-radius: 10px; overflow: hidden; border: 1px solid #e0e6ef; transition: transform 0.2s, box-shadow 0.2s; }
+        .store-game-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(20,124,195,0.13); }
+        .store-card-img { width: 100%; aspect-ratio: 16/10; background: linear-gradient(135deg, #1a2a4a 0%, #2d5a8e 50%, #8e2d2d 100%); overflow: hidden; }
+        .store-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .store-card-body { padding: 10px 12px 12px; }
+        .store-card-body h4 { font-size: 12px; font-weight: 700; color: #147CC3; margin-bottom: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .store-card-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+        .s-btn-cart { background: #Ea4040; border: none; color: #fff; width: 30px; height: 30px; border-radius: 6px; font-size: 14px; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .s-btn-price { background: #28A745; border: none; color: #fff; padding: 6px 8px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; cursor: pointer; flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; }
+        .s-btn-view { background: #147CC3; color: #fff; border: 1.5px solid #dde4ef; padding: 6px 10px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; cursor: pointer; }
+        .s-btn-view:hover { background: #0e5a8a; }
+
+        .store-view-all-wrap { display: flex; justify-content: center; margin: 18px 0 34px; }
+        .store-view-all-btn { background: #147CC3; color: #fff; border: none; padding: 11px 70px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; }
+        .store-view-all-btn:hover { background: #0e5a8a; }
+
+        .no-results { text-align: center; padding: 40px; color: #777; font-size: 14px; font-weight: 600; grid-column: 1 / -1; }
+
+        
+        @media (max-width: 1000px) {
+            .store-game-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .store-game-grid { grid-template-columns: repeat(2, 1fr); }
+            .store-header-inner { flex-wrap: wrap; gap: 10px; }
+            .store-controls { flex-wrap: wrap; justify-content: flex-start; }
+            .store-search-box { max-width: 100%; margin: 0; flex: 1 1 100%; }
+            .store-filter-tabs { flex-wrap: wrap; }
+            .store-featured-inner { max-width: 100%; }
+            .store-featured-banner { background-position: center; min-height: 320px; }
+            .store-featured-content { padding: 24px 20px; }
+            .store-featured-label { font-size: 16px; }
+            .store-featured-title { font-size: 14px; }
+            .store-featured-actions { flex-wrap: wrap; gap: 8px; }
+            .store-btn-cart, .store-btn-price, .store-btn-view-outline { flex: 1; justify-content: center; min-width: 90px; }
+           
+            .s-btn-cart { width: 28px; height: 28px; }
+            .s-btn-price { font-size: 10px; padding: 5px 6px; }
+            .s-btn-view { font-size: 10px; padding: 5px 8px; }
+
+            .info .container { flex-wrap: wrap; justify-content: center; gap: 8px; }
+            .brand-name { width: 100%; text-align: center; font-size: 14px; }
+            .contact-info { gap: 15px; font-size: 13px; }
+            .log-btn { justify-content: center; }
+
+
+        }
+
+        @media (max-width: 480px) {
+            .store-game-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .store-heading { font-size: 20px; }
+            .store-header-inner { flex-direction: column; align-items: flex-start; }
+            .store-controls { width: 100%; }
+            .store-search-box { max-width: 100%; flex: 1 1 100%; }
+            .store-filter-btn { font-size: 11px; padding: 5px 10px; }
+            .store-featured-banner { min-height: 280px; }
+            .store-featured-label { font-size: 14px; }
+            .store-featured-title { font-size: 13px; }
+            .store-featured-desc { display: none; }
+            .store-featured-actions { gap: 6px; }
+            .store-btn-cart, .store-btn-price, .store-btn-view-outline { font-size: 11px; padding: 7px 10px; flex: 1; justify-content: center; min-width: 80px; }
+            .store-view-all-btn { padding: 11px 40px; }
+            .store-section-title { font-size: 16px; }
+            
+            .store-card-actions { flex-wrap: wrap; }
+            .s-btn-cart { width: 26px; height: 26px; flex-shrink: 0; }
+            .s-btn-price { flex: 1; font-size: 10px; min-width: 70px; }
+            .s-btn-view { width: 100%; text-align: center; }
+            
+
+            
+        }
+
+        @media (max-width: 360px) {
+            .store-game-grid { grid-template-columns: 1fr; }
+            .store-featured-banner { min-height: 240px; }
+        }
+
+    </style>
+</head>
+<body class="store-page-bg">
+
+    <div class="info" id="home">
+        <div class="container">
+            <span class="brand-name">International E-Digital Gaming Portal</span>
+            <div class="contact-info">
+                <span><img src="phone.png" alt="Phone" class="contact-icon"> +63 912 345 6789</span>
+                <span><img src="email.png" alt="Email" class="contact-icon"> info.sample@gmail.com</span>
+            </div>
+            <div class="log-btn">
+                <a href="#" class="login">Log In</a>
+                <a href="#" class="register">Register</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-bar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="IEG Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About IEG</a></li>
+                <li><a href="index.html#licensing">Licensing</a></li>
+                <li><a href="index.html#membership">Membership</a></li>
+                <li><a href="index.html#developer">Developer Portal</a></li>
+                <li><a href="store.html" class="active">Store</a></li>
+                <li><a href="index.html#government">Government Dashboard</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="store-top-bar">
+        <div class="store-header-inner">
+            <h2 class="store-heading">Store</h2>
+            <div class="store-controls">
+                <div class="store-search-box">
+                    <input type="text" id="store-search" placeholder="Search...">
+                    <button onclick="filterGames()"><img src="magnifying-glass (2).png" alt="Cart" style="width:20px; height:20px; filter: brightness(0) invert(1);"></button>
+                </div>
+                <div class="store-filter-tabs">
+                    <button class="store-filter-btn active-filter" onclick="setFilter(this,'all')">All</button>
+                    <button class="store-filter-btn" onclick="setFilter(this,'casual')">Casual <span class="s-notif-dot"></span></button>
+                    <button class="store-filter-btn" onclick="setFilter(this,'esports')">E-Sports <span class="s-notif-dot"></span></button>
+                    <button class="store-filter-btn" onclick="setFilter(this,'educational')">Educational</button>
+                    <button class="store-filter-btn" onclick="setFilter(this,'others')">Others <span class="s-notif-dot"></span></button>
+                </div>
+                <button class="store-sort-btn">Sort &#9660;</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="store-featured-banner" id="featured-banner">
+        <button class="store-banner-nav store-banner-left">&#10094;</button>
+        <div class="store-featured-content">
+            <div class="store-featured-inner">
+                <div class="store-featured-label">Featured Games</div>
+                <div class="store-featured-title" id="featured-title">Aetherion Online: Chronicles of the Seven Realms</div>
+                <div class="store-featured-desc" id="featured-desc">Aetherion Online is a massively online role-playing game where players explore vast open worlds, form alliances, and embark on epic quests across multiple realms. Players create unique characters and develop skills through fair gameplay mechanics...</div>
+                <div class="store-genre-label" id="featured-genre">E-Sports / MORPG</div>
+                <div class="store-tag-row" id="featured-tags">
+                    <span class="store-tag-pill">Massively Online</span>
+                    <span class="store-tag-pill">Role-Playing Game</span>
+                </div>
+                <div class="store-featured-actions">
+                    <button class="store-btn-cart"><img src="shopping-cart.png" alt="Cart" style="width:16px; height:16px; filter: brightness(0) invert(1);"> Add to Cart</button>
+                    <button class="store-btn-price" id="featured-price"><img src="shopping-bag (1).png" alt="Cart" style="width:16px; height:16px; filter: brightness(0) invert(1);"> $150.00</button>
+                    <button class="store-btn-view-outline">View</button>
+                </div>
+            </div>
+        </div>
+        <button class="store-banner-nav store-banner-right">&#10095;</button>
+    </div>
+
+    <div class="store-content">
+        <h3 class="store-section-title">New Arrival</h3>
+        <div class="store-game-grid" id="store-new-arrival"></div>
+        <div class="store-view-all-wrap">
+            <button class="store-view-all-btn">View all</button>
+        </div>
+
+        <h3 class="store-section-title">Top Choice</h3>
+        <div class="store-game-grid" id="store-top-choice"></div>
+        <div class="store-view-all-wrap">
+            <button class="store-view-all-btn">View all</button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-top">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <img src="logo.png" alt="IEG Logo" class="footer-logo">
+                </div>
+                <div class="footer-links-wrapper">
+                    <h4 class="links-title">Quick Links:</h4>
+                    <div class="links-columns">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About IEG</a></li>
+                            <li><a href="index.html#licensing">Licensing</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="index.html#membership">Membership</a></li>
+                            <li><a href="index.html#developer">Developer Portal</a></li>
+                            <li><a href="store.html">Store</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="index.html#government">Government Dashboard</a></li>
+                            <li><a href="index.html#testimonials">Testimonials</a></li>
+                            <li><a href="index.html#contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-slogan-bar">
+            <h2>Global Licensing for Responsible Digital Gaming</h2>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>© 2025 International E-Digital Gaming Portal All Rights Reserved.</p>
+                <p>Designed &amp; Developed by: BB 88 Advertising and Digital Solutions Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+    const storeGames = [
+        { title: "Aetherion Online: Chronicles of the Seven Realms", price: "$150.00", img: "img33.png", category: "esports" },
+        { title: "Aetherion Online: Chronicles of the Seven Realms", price: "$150.00", img: "img33.png", category: "casual" },
+        { title: "Aetherion Online: Chronicles of the Seven Realms", price: "$150.00", img: "img33.png", category: "esports" },
+        { title: "Aetherion Online: Chronicles of the Seven Realms", price: "$150.00", img: "img33.png", category: "educational" },
+        { title: "Aetherion Online: Chronicles of the Seven Realms", price: "$150.00", img: "img33.png", category: "casual" },
+        { title: "Aetherion Online: Chronicles of the Seven Realms", price: "$150.00", img: "img33.png", category: "others" },
+        { title: "Aetherion Online: Chronicles of the Seven Realms", price: "$150.00", img: "img33.png", category: "esports" },
+        { title: "Aetherion Online: Chronicles of the Seven Realms", price: "$150.00", img: "img33.png", category: "casual" },
+    ];
+
+   
+
+    let featuredIndex = 0;
+    let activeFilter = 'all';
+
+    function storeCard(g) {
+        return `<div class="store-game-card">
+            <div class="store-card-img"><img src="${g.img}" alt="${g.title}" onerror="this.style.display='none'"></div>
+            <div class="store-card-body">
+                <h4 title="${g.title}">${g.title}</h4>
+                <div class="store-card-actions">
+                    <button class="s-btn-cart"><img src="shopping-cart.png" alt="Cart" style="width:16px; height:16px; filter: brightness(0) invert(1);"></button>
+                    <button class="s-btn-price"style="display:flex; align-items:center; gap:4px;"><img src="shopping-bag (1).png" alt="Cart" style="width:16px; height:16px; filter: brightness(0) invert(1);"> ${g.price}</button>
+                    <button class="s-btn-view">View</button>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    function renderGrids(games) {
+        const html = games.length
+            ? games.map(storeCard).join('')
+            : '<div class="no-results">No games found.</div>';
+        document.getElementById('store-new-arrival').innerHTML = html;
+        document.getElementById('store-top-choice').innerHTML = html;
+    }
+
+    function setFilter(btn, category) {
+        document.querySelectorAll('.store-filter-btn').forEach(b => b.classList.remove('active-filter'));
+        btn.classList.add('active-filter');
+        activeFilter = category;
+        filterGames();
+    }
+
+    function filterGames() {
+        const query = document.getElementById('store-search').value.toLowerCase();
+        const filtered = storeGames.filter(g => {
+            const matchCat = activeFilter === 'all' || g.category === activeFilter;
+            const matchSearch = g.title.toLowerCase().includes(query);
+            return matchCat && matchSearch;
+        });
+        renderGrids(filtered);
+    }
+
+    function changeFeatured(dir) {
+        featuredIndex = (featuredIndex + dir + featured.length) % featured.length;
+        const f = featured[featuredIndex];
+        document.getElementById('featured-title').textContent = f.title;
+        document.getElementById('featured-desc').textContent = f.desc;
+        document.getElementById('featured-genre').textContent = f.genre;
+        document.getElementById('featured-price').innerHTML = `&#128274; ${f.price}`;
+        document.getElementById('featured-tags').innerHTML = f.tags.map(t => `<span class="store-tag-pill">${t}</span>`).join('');
+        document.getElementById('featured-banner').style.backgroundImage =
+            `linear-gradient(to right, #0b4f7a 0%, #147CC3 25%, rgba(20,124,195,0.55) 55%, transparent 80%), url('${f.bg}')`;
+    }
+
+    renderGrids(storeGames);
+    document.getElementById('store-search').addEventListener('input', filterGames);
+    </script>
+</body>
+</html>
