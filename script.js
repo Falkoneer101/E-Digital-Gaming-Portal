@@ -149,7 +149,7 @@ document.getElementById('nextBtn').addEventListener('click', () => {
 let currentPos = 0;
 
 nextBtn.addEventListener('click', () => {
-    const cardWidth = document.querySelector('.testimonial-item').offsetWidth + 30; // Card width + Gap
+    const cardWidth = document.querySelector('.testimonial-item').offsetWidth + 30; 
     const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
     
     if (currentPos < maxScroll) {
