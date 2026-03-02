@@ -118,7 +118,7 @@ const track = document.querySelector('.testimonial-track');
 $(document).ready(function () {
     $('.testimonial-track').owlCarousel({
         loop: true,
-        margin: 300,
+        margin: 80,
         nav: false,
         dots: false,
         autoplay: true,
@@ -131,7 +131,7 @@ $(document).ready(function () {
         responsive: {
         0: { items: 1 },      
         480: { items: 1 },   
-        768: { items: 3 },    
+        768: { items: 2 },    
         1024: { items: 2 }   
         }
     });
@@ -166,3 +166,35 @@ prevBtn.addEventListener('click', () => {
         track.style.transform = `translateX(-${currentPos}px)`;
     }
 });
+
+const navLinks = document.querySelectorAll('.nav-links a, .nav-links-sidebar a');
+
+const sectionIds = ['home', 'about', 'licensing', 'membership', 'developer', 'government', 'testimonials', 'contact'];
+
+window.addEventListener('scroll', () => {
+    let current = 'home';
+
+    sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 150) {
+                current = id;
+            }
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (
+            (current === 'home' && (href === 'index.html' || href === 'index.html#home')) ||
+            href === `index.html#${current}` ||
+            href === `#${current}`
+        ) {
+            link.classList.add('active');
+        }
+    });
+});
+
+window.dispatchEvent(new Event('scroll'));
