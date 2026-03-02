@@ -6,6 +6,10 @@
     <title>E-Gaming</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </head>
 <body>
     <div class="info" id="home">
@@ -25,20 +29,43 @@
         <div class="container">
             <div class="logo">
                 <img src="logo.png" alt="IEG Logo">
-        </div>
+            </div>
+            <button class="burger-btn" id="burgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About IEG</a></li>
-                <li><a href="#licensing">Licensing</a></li>
-                <li><a href="#membership">Membership</a></li>
-                <li><a href="#developer">Developer Portal</a></li>
-                <li><a href="store.html">Store</a></li> 
-                <li><a href="#government">Government Dashboard</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About IEG</a></li>
+                <li><a href="index.html#licensing">Licensing</a></li>
+                <li><a href="index.html#membership">Membership</a></li>
+                <li><a href="index.html#developer">Developer Portal</a></li>
+                <li><a href="store.html" class="active">Store</a></li>
+                <li><a href="index.html#government">Government Dashboard</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#contact">Contact Us</a></li>
             </ul>
         </div>
     </div>
+
+    <div class="mobile-menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
+
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <button class="sidebar-close-btn" onclick="toggleMobileMenu()" aria-label="Close menu">&times;</button>
+        <ul class="nav-links-sidebar">
+            <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="index.html#about" onclick="toggleMobileMenu()">About IEG</a></li>
+            <li><a href="index.html#licensing" onclick="toggleMobileMenu()">Licensing</a></li>
+            <li><a href="index.html#membership" onclick="toggleMobileMenu()">Membership</a></li>
+            <li><a href="index.html#developer" onclick="toggleMobileMenu()">Developer Portal</a></li>
+            <li><a href="store.html" class="active" onclick="toggleMobileMenu()">Store</a></li>
+            <li><a href="index.html#government" onclick="toggleMobileMenu()">Government Dashboard</a></li>
+            <li><a href="index.html#testimonials" onclick="toggleMobileMenu()">Testimonials</a></li>
+            <li><a href="index.html#contact" onclick="toggleMobileMenu()">Contact Us</a></li>
+        </ul>
+    </div>
+
     <div class="tittle">
         <h1>"Global Licensing for Responsible Digital Gaming"</h1>
     </div>
@@ -439,7 +466,7 @@
                     </div>
                 </div>
                 <div class="testimonial-slider">
-                    <div class="testimonial-track">
+                    <div class="testimonial-track owl-carousel owl-theme">
                         <div class="testimonial-item">
                             <div class="testimonial-bubble">
                                 <p>“IEG gave our studio global credibility. The QR license system made our game instantly verifiable across multiple regions.”</p>

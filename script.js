@@ -1,3 +1,14 @@
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('menuOverlay');
+    const btn = document.getElementById('burgerBtn');
+    if (!sidebar) return;
+    const isOpen = sidebar.classList.toggle('open');
+    overlay.classList.toggle('active', isOpen);
+    btn.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
 const slideData = [
     {
         title: "Apply for an IEG license<br>(new submissions).",
@@ -104,8 +115,36 @@ function rotateNews(direction) {
 renderNews();
 
 const track = document.querySelector('.testimonial-track');
-const nextBtn = document.getElementById('nextBtn');
-const prevBtn = document.getElementById('prevBtn');
+$(document).ready(function () {
+    $('.testimonial-track').owlCarousel({
+        loop: true,
+        margin: 300,
+        nav: false,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 4000,
+        autoplayHoverPause: true,
+        navText: [
+            '<span>&#10094;</span>',
+            '<span>&#10095;</span>'
+        ],
+        responsive: {
+        0: { items: 1 },      
+        480: { items: 1 },   
+        768: { items: 3 },    
+        1024: { items: 2 }   
+        }
+    });
+});
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+    $('.testimonial-track').trigger('prev.owl.carousel');
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+    $('.testimonial-track').trigger('next.owl.carousel');
+});
+
 
 let currentPos = 0;
 
